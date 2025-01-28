@@ -81,6 +81,15 @@ ap dot11 5ghz rate RATE_36M supported
 ap dot11 5ghz rate RATE_48M supported
 ap dot11 5ghz rate RATE_54M supported
 !
+ap dot11 6ghz rf-profile default-rf-profile-6ghz
+ shutdown
+ channel chan-width maximum WIDTH_80MHz
+ rate RATE_12M mandatory
+ rate RATE_24M supported
+ rate RATE_6M disable
+ rate RATE_9M disable
+ no shutdown
+!
 no ap dot11 24ghz shutdown
 no ap dot11 5ghz shutdown
 !
@@ -142,10 +151,6 @@ wireless profile policy POLICY_PRFL_EMPLOYEE
  http-tlv-caching
  ipv4 arp-proxy
  ipv4 dhcp required
- ipv4 flow monitor wireless-avc-basic input
- ipv4 flow monitor wireless-avc-basic output
- ipv6 flow monitor wireless-avc-basic-ipv6 input
- ipv6 flow monitor wireless-avc-basic-ipv6 output
  nac
  radius-profiling
  session-timeout 86400
@@ -170,10 +175,6 @@ wireless profile policy POLICY_PRFL_EMPLOYEE_FLEX
  http-tlv-caching
  ipv4 arp-proxy
  ipv4 dhcp required
- ipv4 flow monitor wireless-avc-basic input
- ipv4 flow monitor wireless-avc-basic output
- ipv6 flow monitor wireless-avc-basic-ipv6 input
- ipv6 flow monitor wireless-avc-basic-ipv6 output
  nac
  radius-profiling
  session-timeout 86400
@@ -215,10 +216,6 @@ wireless profile policy POLICY_PRFL_IOT
  http-tlv-caching
  ipv4 arp-proxy
  ipv4 dhcp required
- ipv4 flow monitor wireless-avc-basic input
- ipv4 flow monitor wireless-avc-basic output
- ipv6 flow monitor wireless-avc-basic-ipv6 input
- ipv6 flow monitor wireless-avc-basic-ipv6 output
  session-timeout 86400
  vlan VLAN_IOT
  no shutdown
@@ -289,12 +286,10 @@ wlan WLAN_PRFL_GUEST_OWE 4 ".:|:.:|:. Guest-OWE"
 !
 wireless profile policy POLICY_PRFL_GUEST
  shutdown
+ dhcp-tlv-caching
+ http-tlv-caching
  ipv4 arp-proxy
  ipv4 dhcp required
- ipv4 flow monitor wireless-avc-basic input
- ipv4 flow monitor wireless-avc-basic output
- ipv6 flow monitor wireless-avc-basic-ipv6 input
- ipv6 flow monitor wireless-avc-basic-ipv6 output
  session-timeout 86400
  vlan VLAN_GUEST
  no shutdown
@@ -318,7 +313,7 @@ no ap dot11 24ghz cleanair device bt-link
 !
 !!! THE FOLLOWING LINE REQUIRES A MANUAL "Y" ANSWER
 wireless mobility group name MY_MOB_DOMAIN
-!!! THE FOLLOWING LINE REQUIRES A MANUAL "Y" ANSWER
+!!! THE PREVIOUS LINE REQUIRES A MANUAL "Y" ANSWER
 wireless rf-network MY_RF_GROUP
 !
 device classifier
@@ -357,6 +352,38 @@ flow monitor wireless-avc-basic-ipv6
  exporter wireless-local-exporter
  cache timeout active 60
  record wireless avc ipv6 basic
+!
+wireless profile policy POLICY_PRFL_EMPLOYEE
+ shutdown
+ ipv4 flow monitor wireless-avc-basic input
+ ipv4 flow monitor wireless-avc-basic output
+ ipv6 flow monitor wireless-avc-basic-ipv6 input
+ ipv6 flow monitor wireless-avc-basic-ipv6 output
+ no shutdown
+!
+wireless profile policy POLICY_PRFL_EMPLOYEE_FLEX
+ shutdown
+ ipv4 flow monitor wireless-avc-basic input
+ ipv4 flow monitor wireless-avc-basic output
+ ipv6 flow monitor wireless-avc-basic-ipv6 input
+ ipv6 flow monitor wireless-avc-basic-ipv6 output
+ no shutdown
+!
+wireless profile policy POLICY_PRFL_IOT
+ shutdown
+ ipv4 flow monitor wireless-avc-basic input
+ ipv4 flow monitor wireless-avc-basic output
+ ipv6 flow monitor wireless-avc-basic-ipv6 input
+ ipv6 flow monitor wireless-avc-basic-ipv6 output
+ no shutdown
+!
+wireless profile policy POLICY_PRFL_GUEST
+ shutdown
+ ipv4 flow monitor wireless-avc-basic input
+ ipv4 flow monitor wireless-avc-basic output
+ ipv6 flow monitor wireless-avc-basic-ipv6 input
+ ipv6 flow monitor wireless-avc-basic-ipv6 output
+ no shutdown
 !
 wireless profile power PWR_PRFL_1G_1X1
  power-save-client-threshold 3
