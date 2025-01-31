@@ -93,6 +93,10 @@ ap dot11 6ghz rf-profile default-rf-profile-6ghz
 no ap dot11 24ghz shutdown
 no ap dot11 5ghz shutdown
 !
+ap dot11 24ghz dot11be
+ap dot11 5ghz dot11be
+ap dot11 6ghz dot11be
+!
 do write memory
 !
 vlan 110
