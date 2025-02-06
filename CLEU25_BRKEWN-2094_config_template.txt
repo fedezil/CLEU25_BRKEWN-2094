@@ -23,7 +23,7 @@ aaa authentication login default local
 aaa authentication login MLIST_CONSOLE none
 aaa authentication login MLIST_LOGIN_LOCAL local
 aaa authorization exec default local 
-aaa authorization exec MLIST_LOGIN_LOCAL local 
+aaa authorization exec MLIST_EXEC_LOCAL local 
 !
 line con 0
  exec-timeout 720 0
@@ -33,7 +33,7 @@ line con 0
 line vty 0 50
  exec-timeout 720 0
  privilege level 15
- authorization exec MLIST_LOGIN_LOCAL
+ authorization exec MLIST_EXEC_LOCAL
  login authentication MLIST_LOGIN_LOCAL
  transport input ssh
 !
