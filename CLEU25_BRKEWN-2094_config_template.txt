@@ -97,8 +97,6 @@ ap dot11 24ghz dot11be
 ap dot11 5ghz dot11be
 ap dot11 6ghz dot11be
 !
-do write memory
-!
 vlan 110
  name VLAN_EMPLOYEE
 !
@@ -271,7 +269,6 @@ wlan WLAN_PRFL_GUEST_OWE 4 ".:|:.:|:. Guest-OWE"
  no mu-mimo
  peer-blocking drop
  radio policy dot11 5ghz
- radio policy dot11 6ghz
  scan-report association
  scan-report roam
  no scheduler asr
@@ -404,7 +401,5 @@ wireless profile calender-profile name CALENDAR_PRFL_NIGHT
 ap profile default-ap-profile
  calendar-profile CALENDAR_PRFL_NIGHT
   action power-saving-mode power-profile PWR_PRFL_1G_1X1
-!
-file prompt alert
 !
 end
