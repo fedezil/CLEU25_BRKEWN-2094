@@ -312,9 +312,6 @@ ap profile default-ap-profile
 no ap dot11 24ghz cleanair device bt-discovery
 no ap dot11 24ghz cleanair device bt-link
 !
-!!! THE FOLLOWING LINE REQUIRES A MANUAL "Y" ANSWER
-wireless mobility group name MY_MOB_DOMAIN
-!!! THE PREVIOUS LINE REQUIRES A MANUAL "Y" ANSWER
 wireless rf-network MY_RF_GROUP
 !
 device classifier
