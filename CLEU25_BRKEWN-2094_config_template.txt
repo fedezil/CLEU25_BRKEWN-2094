@@ -139,10 +139,11 @@ wlan WLAN_PRFL_EMPLOYEE 1 ".:|:.:|:. Employee"
  no scheduler asr
  security ft
  security wpa wpa3
+ security wpa wpa3 beacon-protection
  security wpa akm dot1x-sha256
  security wpa akm ft dot1x
  security dot1x authentication-list MLIST_AUTHC_1X
- security pmf optional
+ security pmf mandatory
  no shutdown
 !
 wireless profile policy POLICY_PRFL_EMPLOYEE
@@ -199,17 +200,17 @@ wlan WLAN_PRFL_IOT 2 ".:|:.:|:. IoT"
  scan-report roam
  no scheduler asr
  security ft
+ no security wpa wpa2
  security wpa wpa2 ciphers gcmp256
  security wpa wpa3
+ security wpa wpa3 beacon-protection
  security wpa psk set-key ascii 0 Catalyst9800OneShot
  no security wpa akm dot1x
- security wpa akm ft psk
  security wpa akm ft sae
  security wpa akm ft sae ext-key
- security wpa akm psk
  security wpa akm sae
  security wpa akm sae ext-key
- security pmf optional
+ security pmf mandatory
  no shutdown
 !
 wireless profile policy POLICY_PRFL_IOT
